@@ -1,6 +1,7 @@
+import fs from 'fs';
 import _ from 'lodash';
 
-const genDiff = (obj1, obj2) => {
+const makeDiffString = (obj1, obj2) => {
   const STATE_TYPES = {
     added: '+',
     deleted: '-',
@@ -29,8 +30,20 @@ const genDiff = (obj1, obj2) => {
     return [
       `  ${STATE_TYPES.deleted} ${key}: ${val1}`,
       `  ${STATE_TYPES.added} ${key}: ${val2}`,
-    ];
-  });
+    ].join('\n');
+  }).join('\n');
+
+  return diff;
+};
+
+const genDiff = (filepath1, filepath2) => {
+  const contentFile1 = fs.readFileSync(filepath1);
+  const contentFile2 = fs.readFileSync(filepath2);
+
+  const obj1 = JSON.parse(contentFile1);
+  const obj2 = JSON.parse(contentFile2);
+  
+  const diff = makeDiffString(obj1, obj2);
 
   return diff;
 };
