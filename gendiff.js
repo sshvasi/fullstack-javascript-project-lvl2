@@ -4,13 +4,14 @@ import { Command } from 'commander';
 
 const program = new Command();
 
+const VERSION = '1.0.0';
+const DESCRIPTION = 'Compares two configuration files and shows a difference.';
+
 program
   .name('gendiff')
-  .description('Compares two configuration files and shows a difference.')
-  .version('1.0.0')
-  .argument('<filepath1> <filepath2>')
+  .description(DESCRIPTION)
+  .version(VERSION)
+  .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format');
 
-program.parse();
-
-export default program;
+program.parse(process.argv);
