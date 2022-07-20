@@ -1,5 +1,6 @@
 import fs from 'fs';
 import _ from 'lodash';
+import { readFile } from './utils.js';
 
 const makeDiffString = (obj1, obj2) => {
   const STATE_TYPES = {
@@ -37,8 +38,8 @@ const makeDiffString = (obj1, obj2) => {
 };
 
 const genDiff = (filepath1, filepath2) => {
-  const contentFile1 = fs.readFileSync(filepath1);
-  const contentFile2 = fs.readFileSync(filepath2);
+  const contentFile1 = readFile(filepath1);
+  const contentFile2 = readFile(filepath2);
 
   const obj1 = JSON.parse(contentFile1);
   const obj2 = JSON.parse(contentFile2);
