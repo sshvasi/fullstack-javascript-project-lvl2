@@ -1,5 +1,7 @@
 const formatDiff = (diff) => {
-  const formattedDiff = diff.join('\n');
+  const formattedDiff = diff
+    .map((line) => `  ${line}`)
+    .join('\n');
 
   return ['{', formattedDiff, '}'].join('\n');
 };

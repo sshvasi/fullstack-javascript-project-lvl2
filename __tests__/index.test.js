@@ -8,12 +8,15 @@ const jsonFilePath2 = getFixturePath('file2.json');
 
 test('gendiff jsons comparation is valid', () => {
   const expected = 
-`  - follow: false
+`{
+  - follow: false
     host: hexlet.io
   - proxy: 123.234.53.22
   - timeout: 50
   + timeout: 20
-  + verbose: true`;
+  + verbose: true
+}`;
+
   const received = genDiff(jsonFilePath1, jsonFilePath2);
   expect(received).toBe(expected);
 });
