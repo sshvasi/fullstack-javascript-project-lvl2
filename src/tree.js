@@ -1,7 +1,6 @@
 import _ from 'lodash';
-import { readFile } from './utils.js';
 
-const makeDiffString = (obj1, obj2) => {
+const createDiffTree = (obj1, obj2) => {
   const STATE_TYPES = {
     added: '+',
     deleted: '-',
@@ -36,16 +35,4 @@ const makeDiffString = (obj1, obj2) => {
   return diff;
 };
 
-const genDiff = (filepath1, filepath2) => {
-  const contentFile1 = readFile(filepath1);
-  const contentFile2 = readFile(filepath2);
-
-  const obj1 = JSON.parse(contentFile1);
-  const obj2 = JSON.parse(contentFile2);
-  
-  const diff = makeDiffString(obj1, obj2);
-
-  return diff;
-};
-
-export default genDiff;
+export default createDiffTree;
