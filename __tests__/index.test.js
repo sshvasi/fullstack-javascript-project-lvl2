@@ -1,4 +1,4 @@
-import { createPath } from '../src/utils.js';
+import { createPath } from '../src/files.js';
 import genDiff from '../index.js';
 
 const getFixturePath = (filename) => createPath(['__fixtures__', filename]);
