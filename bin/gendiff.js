@@ -16,9 +16,7 @@ program
   .option('-f, --format <type>', 'output format')
   .action((filepath1, filepath2) => {
     const diff = genDiff(filepath1, filepath2);
-    console.log('{');
     console.log(diff);
-    console.log('}');
   });
 
 program.parse(process.argv);

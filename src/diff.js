@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const createDiffTree = (obj1, obj2) => {
+const createDiff = (obj1, obj2) => {
   const STATE_TYPES = {
     added: '+',
     deleted: '-',
@@ -30,9 +30,9 @@ const createDiffTree = (obj1, obj2) => {
       `  ${STATE_TYPES.deleted} ${key}: ${val1}`,
       `  ${STATE_TYPES.added} ${key}: ${val2}`,
     ].join('\n');
-  }).join('\n');
+  });
 
   return diff;
 };
 
-export default createDiffTree;
+export default createDiff;
