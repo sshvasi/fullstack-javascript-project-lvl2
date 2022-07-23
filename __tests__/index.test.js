@@ -3,16 +3,9 @@ import genDiff from '../index.js';
 
 const getFixturePath = (filename) => createPath(['__fixtures__', filename]);
 
-const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
+const expected = getFixturePath('expected.txt');
 
-describe('compare flat json files', () => {
+describe('compare nested json files', () => {
   test('positive scenario', () => {
     const filePath1 = getFixturePath('file1.json');
     const filePath2 = getFixturePath('file2.json');
@@ -23,7 +16,7 @@ describe('compare flat json files', () => {
   });
 });
 
-describe('compare flat yaml files', () => {
+describe('compare nested yaml files', () => {
   test('positive scenario', () => {
     const filePath1 = getFixturePath('file1.yml');
     const filePath2 = getFixturePath('file2.yml');
