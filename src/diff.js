@@ -10,39 +10,39 @@ const createDiffTree = (obj1, obj2) => {
 
     if (!_.has(obj1, key)) {
       return {
-        key,
         type: types.added,
+        key,
         value: value2,
       };
     }
 
     if (!_.has(obj2, key)) {
       return {
-        key,
         type: types.deleted,
+        key,
         value: value1,
       };
     }
 
     if (value1 === value2) {
       return {
-        key,
         type: types.unchanged,
+        key,
         value: value1,
       };
     }
 
     if (_.isObject(value1) && _.isObject(value2)) {
       return {
-        key,
         type: types.nested,
+        key,
         children: createDiffTree(value1, value2),
       };
     }
 
     return {
-      key,
       type: types.changed,
+      key,
       prevValue: value1,
       value: value2,
     };
