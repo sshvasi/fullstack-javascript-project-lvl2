@@ -14,7 +14,9 @@ const formatNodeValue = (value) => {
 };
 
 const formatNode = (node, path) => {
-  const { key, type, value, prevValue, children } = node;
+  const {
+    key, type, value, prevValue, children 
+  } = node;
   const currentPath = [...path, key].join('.');
 
   switch (type) {
