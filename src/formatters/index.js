@@ -5,6 +5,6 @@ export default (diffTree, formatName) => {
     case 'stylish':
       return stylish(diffTree);
     default:
-      throw new Error(`Unexpected output format ${format}`);
+      throw new Error(`Unexpected output format ${formatName}`);
   }
 };
