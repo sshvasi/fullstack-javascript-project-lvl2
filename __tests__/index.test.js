@@ -35,5 +35,5 @@ test.each(combinations)(
     const expected = expectedDiffs.get(format);
 
     expect(actual).toStrictEqual(expected);
-  }
+  },
 );

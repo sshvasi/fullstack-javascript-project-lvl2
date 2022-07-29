@@ -8,7 +8,7 @@ export default (diffTree, formatName) => {
       return stylish(diffTree);
     case 'plain':
       return plain(diffTree);
-    case 'json': 
+    case 'json':
       return json(diffTree);
     default:
       throw new Error(`Unexpected output format ${formatName}`);

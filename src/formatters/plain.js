@@ -15,7 +15,7 @@ const formatNodeValue = (value) => {
 
 const formatNode = (node, path) => {
   const {
-    key, type, value, prevValue, children 
+    key, type, value, prevValue, children,
   } = node;
   const currentPath = [...path, key].join('.');
 
