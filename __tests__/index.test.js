@@ -3,27 +3,27 @@ import genDiff from '../index.js';
 
 const getFixturePath = (filename) => createPath(['__fixtures__', filename]);
 
+const formats = ['stylish', 'plain'];
+const extensions = ['json', 'yml'];
+const expectedDiffs = new Map();
 
-describe('compare nested json files', () => {
-  test('positive scenario', () => {
-    const filePath1 = getFixturePath('file1.json');
-    const filePath2 = getFixturePath('file2.json');
+const combinations = extensions.flatMap(
+  (extension) => formats.map((format) => [extension, format]),
+);
 
-    const expected = readFile(getFixturePath('expected.txt'));
-    const received = genDiff(filePath1, filePath2);
-
-    expect(received).toStrictEqual(expected);
+beforeAll(() => {
+  formats.forEach((format) => {
+    const content = readFile(getFixturePath(`expected-${format}.txt`));
+    expectedDiffs.set(format, content.trim());
   });
 });
 
-describe('compare nested yaml files', () => {
-  test('positive scenario', () => {
-    const filePath1 = getFixturePath('file1.yml');
-    const filePath2 = getFixturePath('file2.yml');
+test.each(combinations)('diff .%s-file formatted as %s', (extension, format) => {
+  const filepath1 = getFixturePath(`file1.${extension}`);
+  const filepath2 = getFixturePath(`file2.${extension}`);
 
-    const expected = readFile(getFixturePath('expected.txt'));
-    const received = genDiff(filePath1, filePath2);
+  const actual = genDiff(filepath1, filepath2, format);
+  const expected = expectedDiffs.get(format);
 
-    expect(received).toStrictEqual(expected);
-  });
+  expect(actual).toStrictEqual(expected);
 });
