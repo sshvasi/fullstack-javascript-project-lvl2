@@ -1,9 +1,9 @@
 import { readFile, getExtension } from './src/files.js';
 import parseFile from './src/parsers.js';
 import createDiff from './src/diff.js';
-import formatDiff from './src/formatter.js';
+import formatDiff from './src/formatters/index.js';
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const fileExtension1 = getExtension(filepath1);
   const fileExtension2 = getExtension(filepath2);
   
@@ -15,7 +15,7 @@ const genDiff = (filepath1, filepath2) => {
   
   const diff = createDiff(obj1, obj2);
 
-  const formattedDiff = formatDiff(diff);
+  const formattedDiff = formatDiff(diff, formatName);
 
   return formattedDiff;
 };

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import types from './types.js';
+import types from '../types.js';
 
 const indentSize = 4;
 const placeholder = ' ';

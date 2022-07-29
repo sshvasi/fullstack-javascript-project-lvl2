@@ -12,10 +12,11 @@ program
   .name('gendiff')
   .description(DESCRIPTION)
   .version(VERSION)
-  .arguments('<filepath1> <filepath2>')
+  .arguments('<filepath1> <filepath2>', 'stylish')
   .option('-f, --format <type>', 'output format')
   .action((filepath1, filepath2) => {
-    const diff = genDiff(filepath1, filepath2);
+    const formatName = program.opts().format;
+    const diff = genDiff(filepath1, filepath2, formatName);
     console.log(diff);
   });
 
